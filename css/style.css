@@ -40,6 +40,7 @@ body {
   background-size: cover;
   /* ensure that the top always stays at the top, the bottom gets cropped */
   background-position: top;
-  /* tl, tr, br, bl */
-  clip-path: polygon();
+
+  /*  https://bennettfeely.com/clippy/ */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
