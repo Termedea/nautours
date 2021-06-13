@@ -1,5 +1,45 @@
+/* Vars */
 :root {
   --light-green: #7ed56f;
   --medium-green: #55c57a;
   --dark-green: #28b485;
+
+  --light-green-rgb: 126, 213, 111;
+  --medium-green-rgb: 85, 197, 122;
+  --dark-green-rgb: 40, 180, 133;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7rem;
+  color: #777777;
+  /* Padding is not inherited */
+  padding: 30px;
+}
+
+.header {
+  height: 95vh;
+  /* backgrounds on top of each other, damn I've always used multiple elements on top of each other... */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(var(--light-green-rgb), 0.8),
+      rgba(var(--dark-green-rgb), 0.8)
+    ),
+    url(../img/hero.jpg);
+  /* fit to element */
+  background-size: cover;
+  /* ensure that the top always stays at the top, the bottom gets cropped */
+  background-position: top;
+  /* tl, tr, br, bl */
+  clip-path: polygon();
 }
