@@ -41,6 +41,83 @@ body {
   /* ensure that the top always stays at the top, the bottom gets cropped */
   background-position: top;
 
-  /*  https://bennettfeely.com/clippy/ */
+  /* https://bennettfeely.com/clippy/ */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  /* ref. from browser window unless parent is position relative.  */
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  /* Fix jumpy animations */
+  backface-visibility: hidden;
+}
+
+.heading-primary span {
+  display: block;
+}
+
+.heaing-primary-main {
+  padding-bottom: 0.9em;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: move-in-left;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primmary-sub {
+  font-size: 20px;
+  letter-spacing: 17.4px;
+  font-weight: 700;
+  animation: move-in-right 0.6s ease-out;
+}
+
+@keyframes move-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes move-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
