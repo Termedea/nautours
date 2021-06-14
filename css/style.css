@@ -3,6 +3,7 @@
   --light-green: #7ed56f;
   --medium-green: #55c57a;
   --dark-green: #28b485;
+  --base-gray: #777;
 
   --light-green-rgb: 126, 213, 111;
   --medium-green-rgb: 85, 197, 122;
@@ -22,7 +23,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7rem;
-  color: #777777;
+  color: var(--base-gray);
   /* Padding is not inherited */
   padding: 30px;
 }
@@ -62,14 +63,16 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-
+  margin-bottom: 50px;
   /* Fix jumpy animations */
   backface-visibility: hidden;
+  text-align: left;
 }
 
 .heading-primary span {
@@ -77,7 +80,7 @@ body {
 }
 
 .heaing-primary-main {
-  padding-bottom: 0.9em;
+  padding-bottom: 0.6em;
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 35px;
@@ -92,6 +95,61 @@ body {
   letter-spacing: 17.4px;
   font-weight: 700;
   animation: move-in-right 0.6s ease-out;
+}
+
+/* link pseudo class */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  /* Always for padding, heights and widths */
+  display: inline-block;
+  /* percent makes it oval */
+  border-radius: 100px;
+  /* transition prop on initial state */
+  transition: all 0.2s ease-out;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.btn::after {
+  /* pseudo-element = considered child of the element */
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.3s;
+}
+
+.btn:hover::after {
+  transform: scale(1.4, 1.6);
+  opacity: 0;
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--base-gray);
+}
+
+.btn-white::after {
+  background-color: white;
+}
+.btn-animated {
+  animation: move-in-bottom 0.5s ease-out 0.75s backwards;
 }
 
 @keyframes move-in-left {
@@ -119,5 +177,17 @@ body {
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes move-in-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
