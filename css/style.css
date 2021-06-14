@@ -8,24 +8,32 @@
   --light-green-rgb: 126, 213, 111;
   --medium-green-rgb: 85, 197, 122;
   --dark-green-rgb: 40, 180, 133;
+
+  /* Bad practice with px. Use percentage to enable user to change font-size */
+  --root-font: 62.5%; /* 100/16px */
 }
 
 /* Reset */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+html {
+  font-size: var(--root-font);
 }
 
 /* Base */
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7rem;
+  line-height: 1.7;
   color: var(--base-gray);
   /* Padding is not inherited */
-  padding: 30px;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
 .header {
@@ -50,12 +58,12 @@ body {
 .logo-box {
   position: absolute;
   /* ref. from browser window unless parent is position relative.  */
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
 }
 
 .text-box {
@@ -69,7 +77,7 @@ body {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  margin-bottom: 50px;
+  margin-bottom: 6rem;
   /* Fix jumpy animations */
   backface-visibility: hidden;
   text-align: left;
@@ -81,9 +89,9 @@ body {
 
 .heaing-primary-main {
   padding-bottom: 0.6em;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: move-in-left;
   animation-duration: 0.6s;
@@ -91,8 +99,8 @@ body {
 }
 
 .heading-primmary-sub {
-  font-size: 20px;
-  letter-spacing: 17.4px;
+  font-size: 2rem;
+  letter-spacing: 1.75rem;
   font-weight: 700;
   animation: move-in-right 0.6s ease-out;
 }
@@ -102,24 +110,25 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
   /* Always for padding, heights and widths */
   display: inline-block;
   /* percent makes it oval */
-  border-radius: 100px;
+  border-radius: 10rem;
   /* transition prop on initial state */
   transition: all 0.2s ease-out;
   position: relative;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .btn::after {
   /* pseudo-element = considered child of the element */
@@ -127,7 +136,7 @@ body {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -155,10 +164,10 @@ body {
 @keyframes move-in-left {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
   100% {
     opacity: 1;
@@ -169,10 +178,10 @@ body {
 @keyframes move-in-right {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
   100% {
     opacity: 1;
@@ -183,7 +192,7 @@ body {
 @keyframes move-in-bottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
 
   100% {
