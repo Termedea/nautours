@@ -1,0 +1,66 @@
+@use '../abstracts/' as *;
+
+.header {
+  height: 95vh;
+  /* backgrounds on top of each other, damn I've always used multiple elements on top of each other... */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-light-green, 0.8),
+      rgba($color-dark-green, 0.8)
+    ),
+    url(../img/hero.jpg);
+  /* fit to element */
+  background-size: cover;
+  /* ensure that the top always stays at the top, the bottom gets cropped */
+  background-position: top;
+
+  /* https://bennettfeely.com/clippy/ */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+
+  &__logo-box {
+    position: absolute;
+    /* ref. from browser window unless parent is position relative.  */
+    top: 4rem;
+    left: 4rem;
+  }
+  &__logo {
+    height: 3.5rem;
+  }
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  //Fix jumpy animations
+  backface-visibility: hidden;
+  text-align: left;
+
+  span {
+    display: block;
+  }
+
+  &--main {
+    padding-bottom: 0.6em;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    @include mixin-move-in-left;
+  }
+  &--sub {
+    font-size: 2rem;
+    letter-spacing: 1.75rem;
+    font-weight: 700;
+
+    @include mixin-move-in-right;
+  }
+}

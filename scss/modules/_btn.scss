@@ -1,0 +1,56 @@
+@use '../abstracts/' as *;
+
+//link pseudo class
+.btn {
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    &::after {
+      transform: scale(1.4, 1.6);
+      opacity: 0;
+    }
+  }
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  }
+  &::after {
+    //pseudo-element = considered child of the element
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s;
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  &--animated {
+    @include mixin-move-in-bottom;
+  }
+
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 1.5rem 4rem;
+    // Always for padding, heights and widths
+    display: inline-block;
+    // percent makes it oval
+    border-radius: 10rem;
+    // transition prop on initial state
+    transition: all 0.2s ease-out;
+    position: relative;
+  }
+}

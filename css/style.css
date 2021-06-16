@@ -1,76 +1,146 @@
-/* Vars */
-:root {
-  --light-green: #7ed56f;
-  --medium-green: #55c57a;
-  --dark-green: #28b485;
-  --base-gray: #777;
-
-  --light-green-rgb: 126, 213, 111;
-  --medium-green-rgb: 85, 197, 122;
-  --dark-green-rgb: 40, 180, 133;
-
-  /* Bad practice with px. Use percentage to enable user to change font-size */
-  --root-font: 62.5%; /* 100/16px */
+/* Bad practice with px. Use percentage to enable user to change font-size */
+/* 100/16px */
+@-webkit-keyframes move-in-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
+  }
+  80% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
-
-/* Reset */
+@keyframes move-in-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
+  }
+  80% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@-webkit-keyframes move-in-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
+  }
+  80% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes move-in-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
+  }
+  80% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@-webkit-keyframes move-in-bottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes move-in-bottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
-html {
-  font-size: var(--root-font);
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
-/* Base */
+html {
+  font-size: 62.5%;
+}
+
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: var(--base-gray);
+  color: #777;
   /* Padding is not inherited */
   padding: 3rem;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .header {
   height: 95vh;
   /* backgrounds on top of each other, damn I've always used multiple elements on top of each other... */
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(var(--light-green-rgb), 0.8),
-      rgba(var(--dark-green-rgb), 0.8)
-    ),
-    url(../img/hero.jpg);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(128, 214, 113, 0.8)), to(rgba(39, 180, 133, 0.8))), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(128, 214, 113, 0.8), rgba(39, 180, 133, 0.8)), url(../img/hero.jpg);
   /* fit to element */
   background-size: cover;
   /* ensure that the top always stays at the top, the bottom gets cropped */
   background-position: top;
-
   /* https://bennettfeely.com/clippy/ */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
 }
-
 .header__logo-box {
   position: absolute;
   /* ref. from browser window unless parent is position relative.  */
   top: 4rem;
   left: 4rem;
 }
-
 .header__logo {
   height: 3.5rem;
 }
-
 .header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -78,61 +148,48 @@ body {
   color: #fff;
   text-transform: uppercase;
   margin-bottom: 6rem;
-  /* Fix jumpy animations */
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   text-align: left;
 }
-
 .heading-primary span {
   display: block;
 }
-
-.heaing-primary--main {
+.heading-primary--main {
   padding-bottom: 0.6em;
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
-
-  animation-name: move-in-left;
-  animation-duration: 0.6s;
-  animation-timing-function: ease-out;
+  -webkit-animation: move-in-left 0.5s ease-out;
+          animation: move-in-left 0.5s ease-out;
 }
-
-.heading-primmary--sub {
+.heading-primary--sub {
   font-size: 2rem;
   letter-spacing: 1.75rem;
   font-weight: 700;
-  animation: move-in-right 0.6s ease-out;
-}
-
-/* link pseudo class */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 1.6rem;
-  padding: 1.5rem 4rem;
-  /* Always for padding, heights and widths */
-  display: inline-block;
-  /* percent makes it oval */
-  border-radius: 10rem;
-  /* transition prop on initial state */
-  transition: all 0.2s ease-out;
-  position: relative;
+  -webkit-animation: move-in-right 0.5s ease-out;
+          animation: move-in-right 0.5s ease-out;
 }
 
 .btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-0.3rem);
+          transform: translateY(-0.3rem);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
-
+.btn:hover::after {
+  -webkit-transform: scale(1.4, 1.6);
+          transform: scale(1.4, 1.6);
+  opacity: 0;
+}
 .btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-0.1rem);
+          transform: translateY(-0.1rem);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .btn::after {
-  /* pseudo-element = considered child of the element */
-  content: '';
+  content: "";
   display: inline-block;
   height: 100%;
   width: 100%;
@@ -141,62 +198,28 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-
-.btn:hover::after {
-  transform: scale(1.4, 1.6);
-  opacity: 0;
-}
-
 .btn--white {
-  background-color: white;
-  color: var(--base-gray);
+  background-color: #fff;
+  color: #777;
 }
-
-.btn-white::after {
-  background-color: white;
+.btn--white::after {
+  background-color: #fff;
 }
 .btn--animated {
-  animation: move-in-bottom 0.5s ease-out 0.75s backwards;
+  -webkit-animation: move-in-bottom 0.5s ease-out;
+          animation: move-in-bottom 0.5s ease-out;
 }
-
-@keyframes move-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem);
-  }
-  80% {
-    transform: translateX(1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes move-in-right {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem);
-  }
-  80% {
-    transform: translateX(-1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes move-in-bottom {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  position: relative;
 }
