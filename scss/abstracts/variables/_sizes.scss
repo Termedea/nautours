@@ -1,0 +1,22 @@
+/* Bad practice with px. Use percentage to enable user to change font-size */
+
+//$root-font: 62.5%; /* 100/16px */
+//$grid-width: 35rem;
+/* because these values nees to be re-calculated in the browser, we can't rely on the SASS variables. */
+:root {
+  --size-root-font: 62.5%;
+  --size-grid-width: 35rem;
+
+  @media screen and (min-width: 60rem) {
+    --size-grid-width: 60rem;
+  }
+  @media screen and (min-width: 90rem) {
+    --size-grid-width: 90rem;
+  }
+  @media screen and (min-width: 114rem) {
+    --size-grid-width: 114rem;
+  }
+}
+
+$gutter-vertical: 6rem;
+$gutter-horizontal: 2rem;

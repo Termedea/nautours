@@ -1,4 +1,4 @@
-@forward './colors' as color-*;
-@forward './sizes' as size-*;
-@forward './mixins' as mixin-*;
+@forward './variables/colors' as color-*;
+@forward './variables/sizes' as size-*;
 @forward './animations' as anim-*;
+@forward './mixins' as mixin-*;

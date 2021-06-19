@@ -1,5 +1,7 @@
 @use '../abstracts/' as *;
-
+html {
+  font-size: var(--size-root-font);
+}
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
